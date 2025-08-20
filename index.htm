@@ -166,10 +166,12 @@
       const data = getQueryParam("data");
       const deepLink;
       if (id && data) {
-        window.location.href = `wordbox://share?id=${encodeURIComponent(id)}&data=${encodeURIComponent(data)}`;
+        window.location.href = `wordbox://share/?id=${id}&data=${data}`;
+        
       } else if (id) {
-        window.location.href = `wordbox://share?id=${encodeURIComponent(id)}`;
+        window.location.href = `https://wordboxenglish.sng.link/?id=${id}`;        
       }
+      
     }
 
     window.onload = openApp;
