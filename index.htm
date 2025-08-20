@@ -160,35 +160,15 @@
       const urlParams = new URLSearchParams(window.location.search);
       return urlParams.get(param);
     }
-
-    function getMobileOperatingSystem() {
-      const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-
-      if (/android/i.test(userAgent)) {
-        return "Android";
-      }
-
-      if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-        return "iOS";
-      }
-
-      return "unknown";
-    }
-
+  
     function openApp() {
       const id = getQueryParam("id");
       const data = getQueryParam("data");
-      const storeLinks = {
-        Android: "https://play.google.com/store/apps/details?id=com.wordbox.ai",
-        iOS: "https://apps.apple.com/us/app/id1669068229",
-      };
-
-      const os = getMobileOperatingSystem();
-
+      const deepLink;
       if (id && data) {
-        window.location = `wordbox://share?id=${encodeURIComponent(id)}&data=${encodeURIComponent(data)}`;
+        window.location.href = `wordbox://share?id=${encodeURIComponent(id)}&data=${encodeURIComponent(data)}`;
       } else if (id) {
-        window.location = `wordbox://share?id=${encodeURIComponent(id)}`;
+        window.location.href = `wordbox://share?id=${encodeURIComponent(id)}`;
       }
     }
 
